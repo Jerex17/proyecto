@@ -1,0 +1,164 @@
+body{
+	font-family: 'open sans';	
+}
+
+.contenedor{
+	padding: 60px 0;
+    width: 90%;
+	max-width: 1000px;
+	margin: auto;
+	overflow: hidden;
+}
+
+.titulo{
+	color:#642a73;
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+header{
+	width:100%;
+		height: 600px;
+ background: #2980B9;  
+background: -webkit-linear-gradient(to right, hsla(205,86%,38%,0.67), hsla(231,99%,37%,0.60), #2980B9); 
+
+	background: linear-gradient(to right, hsla(205,67%,83%,0.67), hsla(232,48%,90%,0.60), #2980B9), url("../imag/img5.jpg"); 
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+nav{
+	text-align: right;
+	padding: 30px 50px 0 0;
+}
+
+nav > a{
+	color: #FFFFFF;
+		font-weight: 300;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+nav > a:hover{
+	text-decoration: underline;
+}
+
+header .textos-header{
+	display: flex;
+	height: 430px;
+		width: 100%;
+	aling-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.textos-header h1{
+	font-size: 50px;
+	color: white;
+}
+
+.textos-header h2{
+	font-size: 30px;
+		font-weight: 300px;
+	color: white;
+}
+
+.wave{
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
+}
+	
+.contenedor-sobre-nosotros{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.imagen-about-us{
+	widht: 48%;
+}
+
+.sobre-nosotros .contenido-textos{
+	width: 48%;
+}
+
+.contenido-textos h3{
+	margin-bottom: 15px;
+}
+
+.contenido-textos h3 span{
+	background: #4d0686;
+	color: white;
+	border-radius: 50%;
+	display: inline-block;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	padding: 2px;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5 );
+	margin-right: 5px;
+}
+
+
+.contenidos-textos p{
+	padding: 0px 0px 30px 30px;
+		font-weight: 300;
+	text-align: justify;
+}
+
+.portafolio{
+	background: #f2f2f2;
+}
+
+.galeria-port{
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.imagen-port{
+	widht: 24%;
+	margin-bottom: 10px;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+	cursor: pointer;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+}
+
+.imagen-port > img{
+	widht: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.hover-galeria{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: scale(0);
+    background: hsla(273,91%,27%, 0.7);
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: -1px;
+}
+
+.hover-galeria img{
+	width: 50px;
+}
+
+.hover-galeria p{
+	color: white;
+}
+
+.imagen-port:hover .hover-galeria{
+	transform: scale(1);
+}
+	

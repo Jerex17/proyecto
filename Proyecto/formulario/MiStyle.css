@@ -1,0 +1,83 @@
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #11e8e0; 
+    border: 1px solid #11e8e0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+}
+
+label {
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
+    color: #333;
+}
+
+input, select, textarea {
+    width: 225px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    background-color: #f2f2f2; 
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #aaa; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+select {
+    width: 250px; 
+    height: 35px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f2f2f2; 
+}
+
+
+.btn1 {
+    width: 150px;
+    height: 30px;
+    margin-top: 20px;
+    background-color: #1eb5e3; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+   position: relative;
+   right: -83px;
+}
+
+.btn2 {
+    width: 150px;
+    height: 30px;
+    margin-top: 20px;
+    background-color: #1eb5e3; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    bottom: -50px;
+    left: -70px;
+    
+}
+
+
+.btn:hover {
+    background-color: #0895e6; 
+}
