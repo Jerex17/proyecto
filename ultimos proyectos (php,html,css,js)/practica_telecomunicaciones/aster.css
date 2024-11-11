@@ -1,0 +1,170 @@
+h2, h3, caption {
+    font-size: 2em;
+    text-align: center;
+}
+
+.banner {
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 275px 0;
+    position: relative;
+    height: auto;
+    text-align: center;
+}
+
+.texto1 {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1em;
+    display: inline-block;
+    text-align: center;
+}
+
+.asterisco {
+    color: green;
+    font-size: 1.5em;
+    margin-left: 10px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.social-iconn {
+    width: 90px;
+    height: 57px;
+}
+
+.benefits {
+    background-color: purple;
+    color: white;
+    padding: 20px;
+    text-align: left;
+}
+
+.asterisco-benefits {
+    color: green;
+    font-weight: bold;
+}
+
+.plans {
+    padding: 20px;
+    color: black;
+    text-align: center;
+}
+
+.plan-table {
+    border-collapse: collapse;
+    width: 45%;
+    margin: 0 10px;
+    display: inline-block;
+    border: 2px solid green;
+}
+
+.plan-table caption {
+    font-weight: bold;
+    padding: 8px;
+    color: purple;
+    background-color: white;
+}
+
+.plan-table th, .plan-table td {
+    border: 1px solid green;
+    padding: 8px;
+    text-align: center;
+    color: white;
+    background-color: purple;
+}
+
+.asterisco-plan {
+    color: green;
+    font-weight: bold;
+}
+
+.channels-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid green;
+}
+
+.channels-table caption {
+    font-weight: bold;
+    padding: 8px;
+    color: purple;
+    background-color: white;
+}
+
+.channels-table th, .channels-table td {
+    border: 1px solid green;
+    padding: 8px;
+    text-align: center;
+    color: white;
+    background-color: purple;
+}
+
+.channels-table th {
+    background-color: #d8b4b4;
+}
+
+.channels-table td {
+    background-color: #9b4d96;
+}
+
+.region-message {
+    background-color: purple;
+    color: white;
+    border: 2px solid green;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.important-info {
+    background-color: white;
+    border: 2px solid green;
+    color: purple;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.important-info ol {
+    padding-left: 20px;
+}
+
+.important-info ul {
+    padding-left: 40px;
+}
+
+.important-info img.telemicro-logo {
+    width: 50px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.footer {
+    background-color: purple;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+.footer .asterisco {
+    color: green;
+}
