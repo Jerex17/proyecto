@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ver Productos</title>
-<link rel="stylesheet" href="styleproducto.css">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="stylep.css">
 </head>
 <body>
-    <h2>Productos</h2>
+    <h2>Lista de Productos</h2>
 
     <?php
     $conexion = new mysqli("localhost", "root", "", "tienda1");
@@ -14,7 +14,11 @@
         die("Conexión fallida: " . $conexion->connect_error);
     }
 
-    $mensaje_confirmacion = '';
+    $productos_por_pagina = 5;
+
+    $pagina_actual = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    $offset = ($pagina_actual - 1) * $productos_por_pagina;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre']) && isset($_POST['cantidad_vender'])) {
         $nombre = $_POST['nombre'];
@@ -23,38 +27,39 @@
         $sql = "SELECT cantidad FROM productos WHERE nombre='$nombre'";
         $resultado = $conexion->query($sql);
         $row = $resultado->fetch_assoc();
-        $cantidad_actual = $row['cantidad'];
 
-        if ($cantidad_actual > 0) {
-            if ($cantidad_vender <= $cantidad_actual) {
+        if ($row) {
+            $cantidad_actual = $row['cantidad'];
+
+            if ($cantidad_actual >= $cantidad_vender) {
                 $nueva_cantidad = $cantidad_actual - $cantidad_vender;
 
                 $sql_actualizar = "UPDATE productos SET cantidad='$nueva_cantidad' WHERE nombre='$nombre'";
-
                 if ($conexion->query($sql_actualizar) === TRUE) {
+                    echo "<p><strong>Compra exitosa. Quedan $nueva_cantidad unidades del producto '$nombre'.</strong></p>";
+
                     if ($nueva_cantidad == 0) {
-                        $sql_eliminar = "DELETE FROM productos WHERE nombre='$nombre'";
-                        $conexion->query($sql_eliminar);
-                        $mensaje_confirmacion = "Compra exitosa. El producto '$nombre' ha sido eliminado debido a que no quedan unidades.";
-                    } else {
-                        $mensaje_confirmacion = "Compra exitosa. Quedan $nueva_cantidad unidades del producto '$nombre'.";
+                        $conexion->query("DELETE FROM productos WHERE nombre='$nombre'");
                     }
                 } else {
-                    $mensaje_confirmacion = "Error al actualizar el producto: " . $conexion->error;
+                    echo "<p><strong>Error al actualizar el producto: " . $conexion->error . "</strong></p>";
                 }
             } else {
-                $mensaje_confirmacion = "No puedes comprar $cantidad_vender unidades. Solo hay $cantidad_actual unidades disponibles.";
+                echo "<p><strong>Stock insuficiente. Solo hay $cantidad_actual unidades del producto '$nombre'.</strong></p>";
             }
         } else {
-            $mensaje_confirmacion = "No hay suficiente stock para realizar la compra del producto '$nombre'.";
+            echo "<p><strong>Producto no encontrado.</strong></p>";
         }
     }
 
-    if ($mensaje_confirmacion != '') {
-        echo "<p><strong>$mensaje_confirmacion</strong></p>";
-    }
+    $sql_total = "SELECT COUNT(*) as total FROM productos";
+    $resultado_total = $conexion->query($sql_total);
+    $row_total = $resultado_total->fetch_assoc();
+    $total_productos = $row_total['total'];
 
-    $sql = "SELECT nombre, precio, itbis, cantidad FROM productos";
+    $total_paginas = ceil($total_productos / $productos_por_pagina);
+
+    $sql = "SELECT nombre, precio, itbis, cantidad FROM productos LIMIT $productos_por_pagina OFFSET $offset";
     $resultado = $conexion->query($sql);
 
     if ($resultado->num_rows > 0) {
@@ -67,7 +72,7 @@
                 <th>Comprar</th>
             </tr>";
 
-        while($row = $resultado->fetch_assoc()) {
+        while ($row = $resultado->fetch_assoc()) {
             echo "<tr>
                 <td>" . $row['nombre'] . "</td>
                 <td>" . $row['precio'] . "</td>
@@ -84,12 +89,20 @@
         }
         echo "</table>";
     } else {
-        echo "No hay productos registrados.";
+        echo "<p>No hay productos registrados.</p>";
     }
+
+    echo "<div class='button-container'>";
+    for ($i = 1; $i <= $total_paginas; $i++) {
+        if ($i == $pagina_actual) {
+            echo "<strong>$i</strong> ";
+        } else {
+            echo "<a href='comprar_producto.php?page=$i'>$i</a> ";
+        }
+    }
+    echo "</div>";
 
     $conexion->close();
     ?>
-
-
 </body>
 </html>
